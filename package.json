@@ -1,0 +1,16 @@
+{
+  "name": "salsa-pos",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Phone-friendly POS page that appends S.A.L.S.A. sales to the ETL pipeline's transactions CSV",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "start": "node --env-file-if-exists=.env src/server.js",
+    "test": "node --test \"test/*.test.js\"",
+    "serve:on": "tailscale serve --bg 3100",
+    "serve:off": "tailscale serve --https=443 off",
+    "serve:status": "tailscale serve status"
+  }
+}

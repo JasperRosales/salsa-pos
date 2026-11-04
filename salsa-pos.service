@@ -1,0 +1,14 @@
+# systemd user service: keeps salsa-pos running and restarts it after a crash
+# or reboot. Install with the steps in README.md ("Keep it running").
+[Unit]
+Description=salsa-pos (S.A.L.S.A. POS page writing to the ETL CSV)
+After=network-online.target
+
+[Service]
+WorkingDirectory=%h/projects/salsa-pos
+ExecStart=/usr/bin/env node --env-file-if-exists=.env src/server.js
+Restart=on-failure
+RestartSec=3
+
+[Install]
+WantedBy=default.target
